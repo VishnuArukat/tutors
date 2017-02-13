@@ -1,0 +1,131 @@
+<!doctype html>
+<html ng-app='my_app'> <!-- Here telling that we are using a single page app this is mandatory and if we remove it it will not get affect -->
+  <head> 
+  	<meta charset="UTF-8">
+    <title>My AngularJS App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="angular-route.min.js"  type="text/javascript"></script>
+    <script src="controller.js" type="text/javascript"></script>
+  </head>
+  <body>
+  		
+  			<!-- we can put the ng-app any where in the code as inside a div or any tags -->
+  		<input type="text" ng-model="name"> <!-- ng-model is used for attching the content of the input to a special thing which is almost like a var which can be used in the below states using the {{}} -->
+  		<div>Hello {{name}}</div> <!-- inhere what ever you type in the input box will automatically appear here -->
+
+  		<div ng-bind="name"></div><!-- we can  use the ng-bind for binding the value to the html tag  and also the any XSS are automatically escaped before wrirting to the body-->
+
+  		<hr />
+
+  		<!-- these type does not work with other text inputs such as given below -->
+
+  		<div ng-model="name2" contenteditable="true"></div>
+  		<div ng-bind="name2"></div>
+
+  		<hr />
+  		<!-- ng-init -->
+  		<div ng-init="language = 'napster'"></div>
+  		{{language}}
+
+  		<!-- we can also use combination of different directives like -->
+
+  		<input type="text" ng-model="language"> {{language}}
+
+  			<hr />
+  		<!-- ng-repeat for looping  -->
+
+  		<div ng-init="my_test=[{name:'napster',pass:'dashwood'},{name:'root',pass:'root'}]"></div>
+
+  		<!-- looping the my_test -->
+  		<p ng-repeat="test in my_test">
+  			Name: {{test.name}} <br />
+  			pass : {{test.pass}}
+  		</p>
+
+
+  		<hr />
+
+<!-- AJS controller -->
+
+<!-- we can use the ng-click which is similar to the onclick function in the js -->
+
+	<div ng-controller="books">
+
+		Select your favourite book : <button ng-click="function_0()">book0</button>
+		<button ng-click="function_1()">book1</button>
+		<button ng-click="function_2()">book2</button>
+		<button ng-click="function_3()">book3</button>
+		<button ng-click="function_4()">book4</button>
+
+		You have selected your favourite book : {{my_book}}
+	</div>
+
+
+	<hr />
+	<!-- FILTERS IN THE ANGULAR JS -->
+
+	Your name plese : <input type="text" ng-model="co_name">  <br />
+	{{'welcome '+co_name | uppercase}}  <br /> <!-- here the filter is the uppercase and it is seperated using the | and it will turn all the elements to uppercase autoatically similarilly there are also lowercase and other filters like currency etc. -->
+	<a href="https://docs.angularjs.org/guide/filter">For more details on Filters</a> <br />
+
+
+	<!-- Routing in the angular js -->
+	<div ng-view> </div>
+
+
+	<!-- ng-include   ensure that it is inside a single quote  -->
+
+	<div ng-include="'test_2.html'"></div>
+
+	
+
+
+<script>
+// coding the controller
+// angular comes from the AJS that is loaded first and module is the app name which is given in the ng-app tag
+
+// $scope is a inbuild var in AJS - 
+
+		// main thing is that when we passing the array in the controller we pass the $scope for telling the AJS that param inside the function is the scope and this is usually the case of using compressor in the code as the compressor renames the js var in the code so that attackers cannot break that but if we dont use the compressor we can avoid using the array and pass simply the function itself
+
+	var application = angular.module('my_app',  [] ) /*the array represnts the loading of dependencies*/
+	application.controller('books',['$scope',function ($scope){
+		console.log("ssssssssssssssssssss",$scope);
+		$scope.my_book = 'None';
+
+		// defining the onclick functions
+
+		$scope.function_0 = function(){
+			$scope.my_book = 'book0';
+		}
+
+		$scope.function_1 = function(){
+			$scope.my_book = 'book1';
+		}
+
+		$scope.function_2 = function(){
+			$scope.my_book = 'book2';
+		}
+
+		$scope.function_3 = function(){
+			$scope.my_book = 'book3';
+		}
+		$scope.function_4 = function(){
+			$scope.my_book = 'book4';
+		}
+
+
+
+
+
+	}]) /*similar to above we can pass function or array*/
+
+
+
+
+</script>
+
+
+
+  </body>
+</html>
