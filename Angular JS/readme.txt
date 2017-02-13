@@ -91,7 +91,7 @@ templateUrl is for adding new html from the outerside
 when using both AJS only loads the template not the templateUrl 
 angular automatically add ng-scope class to the ng-view div
 
-
+$routeScope is a global var which can be accessed from anywhere and it can be used in the conditional resolve in the config function
 
 
 
