@@ -76,9 +76,35 @@
 	<!-- ng-include   ensure that it is inside a single quote  -->
 
 	<div ng-include="'test_2.html'"></div>
+	<div ng-controller="people">
+		<input type="text" ng-model="searchkey"/>
+		<ul>
+			<h2>Names of programmers and ages</h2>
+			<!-- peroson and persons are not defined right now and it is defined in the controller and the searchkey is added as a filter in the ng-repeat for the filtering of the list-->
+			<li ng-repeat="person in persons |filter:searchkey">{{person.Name + ' '+ person.Age}}
+			</li>
+		</ul>	
 
+	</div>
 	
+	<!-- advanced search filters in the angular js  -->
+	<div ng-controller="favourites">
 
+		<ul>
+			<h2>Names of programmers and ages</h2>
+			<!-- peroson and persons are not defined right now and it is defined in the controller and the searchkey is added as a filter in the ng-repeat for the filtering of the list-->
+			<li ng-repeat="person in persons |filter:globalsearch">{{person.Name + ' : '+ person.Age +  " : "+ person.fav_color}}
+			</li>
+		</ul>	
+
+	</div>
+	<div id ="searchboxes">
+		<input type="text" ng-model="globalsearch.$"> <!-- global search not bound to anything so it will filter anything out -->
+		<input type="text" ng-model="globalsearch.fav_color"> <!-- search according to the fav_color only -->
+		<input type="text" ng-model="globalsearch.Age"><!-- search according to Age -->
+		<input type="text" ng-model="globalsearch.Name"><!-- search according to the name -->
+
+	</div>
 
 <script>
 // coding the controller

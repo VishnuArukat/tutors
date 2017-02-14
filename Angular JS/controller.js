@@ -19,6 +19,7 @@ new_obj.config(['$routeProvider',function($routeProvider,$locationProvider){
 				if (!$routeScope.loggedIn){
 					$location.path('/')
 				}
+			}
 		},
 		templateUrl: 'dashboard.html'
 	})
@@ -27,7 +28,6 @@ new_obj.config(['$routeProvider',function($routeProvider,$locationProvider){
 	.otherwise({
 		redirectTo:'/'
 	})
-	$locationProvider.html5Mode(true);
 
 }]);
 
@@ -49,5 +49,50 @@ new_obj.controller('logincontroller',function($scope,$location,$routeScope){
 		}
 	}
 
+
+});
+
+// using the http service in the controller
+new_obj.controller("people",function($scope,$http){
+	console.log("dgshgdhsg",$http)
+	// getting the file using the path to the file and adding that to the persons variable defined in the html
+	$http.get("database.json").success(function(responce){
+
+		$scope.persons = responce.records;
+
+	})
+
+
+})
+
+
+
+// For the advanced search box - loading the file from a variable 
+
+
+var Flex = {
+	"records": [
+		{
+			"Name":"napster",
+			"Age" : 18,
+			"fav_color":"red"
+		},
+		{
+			"Name": "xere",
+			"Age":27,
+			"fav_color":"green"
+		},
+		{
+			"Name": "Ace",
+			"Age":29,
+			"fav_color":"orange"
+		}
+
+	]
+}
+
+
+new_obj.controller("favourites",function($scope){
+	$scope.persons = Flex.records;
 
 });

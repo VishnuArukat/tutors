@@ -94,7 +94,10 @@ angular automatically add ng-scope class to the ng-view div
 $routeScope is a global var which can be accessed from anywhere and it can be used in the conditional resolve in the config function
 
 
+$http SERVICE
+================
 
+	To retreive data from remote servers.
 
 
 
