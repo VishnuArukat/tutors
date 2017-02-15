@@ -97,11 +97,28 @@ $routeScope is a global var which can be accessed from anywhere and it can be us
 $http SERVICE
 ================
 
-	To retreive data from remote servers.
+	To retreive data from remote servers.and $http can be used to make a get request to get the file.and take the responce from that and pass to the var inside the html.for more information refer the $http webservice doc provided by the AJS
 
 
+PASSING THE DATA BETWEEN DIFFERENT SCOPES
+==========================================
+
+ng-repeat will create its own local scope in the code.To pass one value of the data to another scope we can use the var as message.property message.something
+
+RANGE BASED LOOPS IN AJS
+========================
+when we use the range based loops in the ng-repeat you have to specify to 'track by $index' if it contains dupes or undefined values and in other cases we can use the normal ng-repeat when passing the arry which has some values.
 
 
+AJS $watch 
+==============
+there is something called digestive watch in the AJS which runs everytime and check whether a new var is registered or not and update any new var
+$watch and $digest and $apply functions are automatically called in the AJS when a var is defined in the AJS
+
+we can also do this manually
+vanila js is another name for the plane javascript.
+
+$digest ---> $digest() can be called manully for checking whether a var changes this is usefull in the button clicks defined in the plane js
 
 
 

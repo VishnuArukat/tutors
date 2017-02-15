@@ -96,3 +96,47 @@ new_obj.controller("favourites",function($scope){
 	$scope.persons = Flex.records;
 
 });
+
+
+new_obj.controller("range",function($scpoe){
+	var range = 10;
+	var myRange = [];
+	for(i=0;i<range;++i){
+
+		myRange.push(i);
+	}
+	$scope.myRange = myRange;
+
+	// we can also define a array using the Array tag like below
+	a= new Array(10); /*it will define 10 undefined indexes*/
+	$scope.range_index = a;
+
+})
+
+new_obj.controller('watch', ['$scope', function($scope){
+	$scope.counter=0;
+	// wacthing the mytext usingthe AJS watch
+	$scope.$watch("mytext",function(newValue,oldValue){
+		console.log('New',newValue);
+		console.log('Old',oldValue);
+		$scop.counter++;
+	})
+
+}]);
+
+new_obj.controller('digest', ['$scope', function($scope){
+
+	$scope.my_random_number = Math.random();
+	
+// when implimenting something in the vanila js the below code doesn't work becasuse the AJS scope and the vanila js scope are two different so we use the digest method in the AJS and this is also used in the ajax request and other button clicks .
+
+	document.querySelector('#digest_button').addEventlistener('click',function(){ /*we do not need to pass the scope again because it is already available in the function above*/
+		$scope.my_random_number =  Math.random();
+		// if the digest function is not called then this change will not take effect
+		$scope.$digest(); 
+	},false);
+	
+}]);
+
+
+

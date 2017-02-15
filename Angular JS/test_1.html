@@ -91,7 +91,7 @@
 	<div ng-controller="favourites">
 
 		<ul>
-			<h2>Names of programmers and ages</h2>
+			<h2>Names of programmers and ages and favourites</h2>
 			<!-- peroson and persons are not defined right now and it is defined in the controller and the searchkey is added as a filter in the ng-repeat for the filtering of the list-->
 			<li ng-repeat="person in persons |filter:globalsearch">{{person.Name + ' : '+ person.Age +  " : "+ person.fav_color}}
 			</li>
@@ -105,6 +105,52 @@
 		<input type="text" ng-model="globalsearch.Name"><!-- search according to the name -->
 
 	</div>
+<br/>
+<hr />
+<!-- PASSING THE DATA BETWEEN THE SCOPE -->
+	<input type="text" ng-model="message.property">
+	<!-- In here we are adding an extra property to the message it can be anything and it will be passed to the outer scope also .If we write the message only to the model it will not inherit-->
+		<p ng-repeat= "i in [1]"> 
+			<input type="text" ng-model="message.property">
+			you wrote :  {{message.property}}
+
+
+		</p>
+		[Outer Scope of P] {{message.property}}
+		
+	</input>
+<!-- Range based loops in AJS -->
+
+	<div ng-controller="range">
+		<li ng-repeat="i in myRange">
+			{{i}}
+			<br/>
+			
+		</li>
+		<!-- using AJS to track the index of the array rather than the values inside the array because in the case of undefined and duplicates in the array AJS won't allow it in the AJS -->
+		<li ng-repeat="i in range_index track by $index">
+			this will print index times<br/>
+			
+		</li>
+
+	</div>
+
+	<!-- $watch in the AJS -->
+	<<div ng-controller="watch">
+			<input type="text" ng-model="mytext">
+	<br/>
+		you have updated text box  {{counter}} times
+	</input>		
+	</div>
+	<!-- $digest basically create a digest cycle which means  -->
+	
+	<<div ng-controller="digest">
+		<span>{{my_random_number}} </span>
+	<br/>
+		<input type="button" id="digest_button" value="create a new rand number"/>
+	</input>		
+	</div>
+
 
 <script>
 // coding the controller
