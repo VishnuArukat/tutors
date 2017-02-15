@@ -121,8 +121,13 @@ vanila js is another name for the plane javascript.
 $digest ---> $digest() can be called manully for checking whether a var changes this is usefull in the button clicks defined in the plane js
 
 
+SERVICES IN AJS
+================
 
+when using the $http with the controller for getting the data from the outside source we may have to write lots of http requests,so to avoid that we can use the services which can be used to store the data get from outside and use it again.only one instance of the service is created and it is referenced everywhere.
+services in the AJS are singleton 
 
+that is when the function from the service is called from the conrollers for the first time the refernce is passed to conrtoller and when we call the controller again (second time ) we get the same value as it will not called the service again for the second time it uses the refernce from the first call.
 
 
 

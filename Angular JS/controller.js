@@ -138,5 +138,22 @@ new_obj.controller('digest', ['$scope', function($scope){
 	
 }]);
 
+// creating the service first you can't have services available for another modules,this can be available for only this module only.
 
+new_obj.service('service_name', function(){
+	var num  = Math.floor(Math.random()*10)	;
+	// in here the this keyword reference to the service in the function and we can pass this service to any of the controllers we can use another method instead of this
+	this.generte =  function(){
+		return num
+	}
+});
+
+// passing the service_name to the controller
+new_obj.controller('services', function($scope,service_name){
+	$scope.create_random = function(){
+		// geting the random number from the service and also remember that the services are singleton that is only works once and we have to refresh the page
+		$scope.random_number = service_name.generate();
+
+	}
+});
 
