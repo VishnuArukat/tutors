@@ -234,3 +234,14 @@ new_obj.controller('provider',function($scope,provider_name){
 	// calling the function from the prvider of AJS
 	$scope.greet_message = provider_name.showDate();
 })
+
+
+// ng-show
+
+new_obj.controller('ngshow', ['$scope', function($scope){
+	$scope.show = 'msg1';
+	$scope.togglevalue = function(){
+		
+		$scope.show = $scope.show == 'msg1' ? 'msg2': 'msg1'; 
+	}
+}])

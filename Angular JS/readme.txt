@@ -151,5 +151,10 @@ SERVICES VS FACTORIES VS PROVIDERS
 providers are more flexible than the service and the factory
 
 
+ng-show
+=========
+when to show something that means show the message using the condition
+
+
 
 

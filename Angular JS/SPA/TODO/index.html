@@ -1,0 +1,15 @@
+<!doctype html>
+<html ng-app='todo_list'> <!-- Here telling that we are using a single page app this is mandatory and if we remove it it will not get affect -->
+  <head> 
+  	<meta charset="UTF-8">
+    <title>My AngularJS App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="angular-route.min.js"  type="text/javascript"></script>
+    <script src="controller.js" type="text/javascript"></script>
+  </head>
+  <body ng-controller="todo">
+  		<h1 style="text-align:center;">Add A Task</h1>
+      <input ng-model='task_name' ng-keyup='searchEnter()' type='text' style="display:block;margin:0 auto;padding:5px;font-size:15px">
+  	
+  </body>
+</html>

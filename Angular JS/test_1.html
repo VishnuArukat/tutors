@@ -171,7 +171,20 @@
 	<div ng-controller="provider">
 		{{greet_message}}
 	</div>
+	
+	<hr />
+	<!-- ng-show in the AJS -->
 
+	<div ng-controller='ngshow'>
+		<button ng-click='togglevalue()'>Toggle value</button>
+		<div class='show_message' ng-show='show =="msg1"'>
+			this is message1
+		</div>
+		<div class='show_message' ng-show='show =="msg2"'>
+			this is message2
+		</div>
+	
+	</div>
 <script>
 // coding the controller
 // angular comes from the AJS that is loaded first and module is the app name which is given in the ng-app tag
