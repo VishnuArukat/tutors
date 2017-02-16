@@ -142,7 +142,7 @@ new_obj.controller('digest', ['$scope', function($scope){
 
 new_obj.service('service_name', function(){
 	var num  = Math.floor(Math.random()*10)	;
-	// in here the this keyword reference to the service in the function and we can pass this service to any of the controllers we can use another method instead of this
+	// in here the this keyword reference to the service in the function and we can pass this service to any of the controllers we can use another method instead of this which is the factories
 	this.generte =  function(){
 		return num
 	}
@@ -157,3 +157,80 @@ new_obj.controller('services', function($scope,service_name){
 	}
 });
 
+// FACTORIES IN THE AJS
+// ==================
+// factories are also singelton and it is same as the service
+
+new_obj.factory('factory_name', function(){
+	// as in the service we use an object instead of the this operator
+	var new_object = {}; /*initializing the object as empty we can add functions and var for the object*/
+	var num  = Math.floor(Math.random()*10)	;
+	new_object.generte =  function(){
+		return num
+	}
+	// returning the new_object as it is accessed from the outer scope
+	return new_object;
+});
+
+// passing the service_name to the controller
+new_obj.controller('factories', function($scope,factory_name){
+	$scope.create_random = function(){
+		// geting the random number from the service and also remember that the services are singleton that is only works once and we have to refresh the page
+		$scope.random_number = factory_name.generate();
+
+	}
+});
+
+
+// PROVIDERS IN THE AJS
+
+new_obj.provider('provider_name',function(){
+	// need to return the code to the injector. injector is the one handles the provider
+	var greet;
+	return {/*returns the provider value*/
+// this $get function is inbuild and it is automatically executed by the injector and so the function corresponding to that
+		$get: function(){
+			return {/*returns the injector value*/
+				// setgreeting function is private function and can not be accessed from the controller and the injector doesn't execute this function it only executes the $get function.
+				// to access the setgreeting function we can access it from the config function like normal
+				setgreeting:function(value){
+					greet = value;
+				},
+				// this is the object that returns so we can create any var or function for that can be used in the code
+				showDate:function(){
+					var date = new Date();
+					// this function can access the greet var from the above
+					return greet+ 'its'+ date.getHour(); /*returns the date value*/
+				},
+				devshowDate:function(){
+					var date = new Date();
+					// this function can access the greet var from the above
+					return date.getHour(); /*returns the date value*/
+				}
+			}
+		}
+	}
+});
+
+
+// Accessing the provider in the config function
+// and the synatx is <providername>Provider  --> here the Provider suffix needs to be added.
+new_obj.config(['provider_nameProvider',function(provider_nameProvider) {
+	console.log("provider",provider_nameProvider);/*thuis will return an object which consist of every function defined in the provider*/
+	// accessing the $get function from the proovider
+	var time = provider_nameProvider.$get().devshowDate();
+	if (time > 0 && time <12){
+
+		provider_nameProvider.setgreeting('good morning')
+	}else{
+		provider_nameProvider.setgreeting('good afternoon')
+	}
+	
+
+}])
+
+// we can provide the provider in the controller
+new_obj.controller('provider',function($scope,provider_name){
+	// calling the function from the prvider of AJS
+	$scope.greet_message = provider_name.showDate();
+})

@@ -150,13 +150,26 @@
 		<input type="button" id="digest_button" value="create a new rand number"/>
 	</input>		
 	</div>
-
+<HR />
 	<!-- AJS services the details are in the readme file -->
 	<div ng-controller="services">
 		<button ng-click="create_random()">Generate Random Number</button>
 		<br />
 		{{random_number}}
 
+	</div>
+<!-- AJS FACTORIES -->
+	<div ng-controller="factories">
+		<button ng-click="create_random()">Generate Random Number</button>
+		<br />
+		{{random_number}}
+
+	</div>
+
+	<!-- PROVIDERS IN THE AJS -->
+
+	<div ng-controller="provider">
+		{{greet_message}}
 	</div>
 
 <script>

@@ -130,8 +130,25 @@ services in the AJS are singleton
 that is when the function from the service is called from the conrollers for the first time the refernce is passed to conrtoller and when we call the controller again (second time ) we get the same value as it will not called the service again for the second time it uses the refernce from the first call.
 
 
+FACTORIES IN THE AJS
+=======================
+
+factories uses the object method for defining  new functions and new varibles and this object is returned for accessing from the outer scope.It is same as the service that it is singelton and it returns the reference of the object in the second call
 
 
+PROVIDERS IN THE AJS
+=====================
+
+providers are the head of the service and factory.that means they all come under the provider,so anything that can be done with the service and factory can be done with the provider as well.
+
+when we create a provider then it will be available in the app.config function and it is like routeProvider
+
+you can access any provider from the config function.so any private function defined in the provider can also be accessed from the config function.
+inside the provider we can also use the this operator just like the service in the AJS.
+
+SERVICES VS FACTORIES VS PROVIDERS
+==================================
+providers are more flexible than the service and the factory
 
 
 
