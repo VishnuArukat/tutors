@@ -156,5 +156,9 @@ ng-show
 when to show something that means show the message using the condition
 
 
+LOCAL STORAGE
+===================
+Storing the data in the local storage .To store the data in the local storage you have to convert every data to string format and store it .It can be done using the inbuild function like JSON.parse()
 
+using the localStorage we can use it store the data so that when the browser reloads the content remains there.
 

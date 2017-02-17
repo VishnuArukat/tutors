@@ -25,10 +25,11 @@
       <input ng-model='task_name' ng-keyup='searchEnter()' type='text' style="display:block;margin:0 auto;padding:5px;font-size:15px">
       <div>
         <ul>
-          <li ng-repeat="task_one in tasks">
+          <!-- to avoid creating the ng-repeat dupes error we can iterate using the index -->
+          <li ng-repeat="task_one in tasks track by $index"> 
           <input type='checkbox' ng-model='task_one.status'>
-          <!-- editing the content after the mistype -->
-          <span ng-keydown='doneEnter()' contenteditable = 'false' ng-dblclick='contentEdit()' ng-model="task_one.task_text" class='done-{{task_one.status}}'>
+          <!-- editing the content after the mistype passing the current value so that it can stored in the localStorage-->
+          <span ng-keydown='doneEnter()' contenteditable = 'false' ng-dblclick='contentEdit(task_one.task_text)' ng-model="task_one.task_text" class='done-{{task_one.status}}'>
             {{task_one.task_text}}
           </span>  
         
