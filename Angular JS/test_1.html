@@ -185,6 +185,23 @@
 		</div>
 	
 	</div>
+
+
+	<!-- CUSTOM FILTERS IN AJS -->
+
+	<div ng-controller="custom_filter">
+		Number : <input type="text" ng-model="name"> <br/>
+		Base Number : <input type="text" ng-model="basenumber"> <br/>
+		<!-- creating a filter named base -->
+			your number {{number}} is basenumber {{base}} is {{number |base:basenumber}}
+	</div>
+
+	<!-- CUSTOM DIRECTIVES -->
+	<div class="" directive-name>
+		<!-- or like html tags -->
+		<directive-name></directive-name>
+		
+	</div>
 <script>
 // coding the controller
 // angular comes from the AJS that is loaded first and module is the app name which is given in the ng-app tag

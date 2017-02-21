@@ -245,3 +245,45 @@ new_obj.controller('ngshow', ['$scope', function($scope){
 		$scope.show = $scope.show == 'msg1' ? 'msg2': 'msg1'; 
 	}
 }])
+
+
+// creating a filter
+// accepts two arguments filter name and a function
+new_obj.filter('base',function(){
+	var filter_function  = function(input,base){
+		var parsed =  parseInt(input,10);
+		var based = parseInt(base,10);
+		if (isNaN(parsed)||isNaN(based) || based <=1 || based >= 37){
+			// return input
+			return "ERROR invalid base !!"
+		}
+		// in below the parsed number is converted as in the base and converted to string and returns the value
+		// based must be between the 2 and 36
+		return parsed.toString(based)
+	}
+	return filter_function;
+})
+
+
+// Custom Directive
+new_obj.directive("directive-name",function(){
+	function linkFunction(scope,elem,attrs){
+		// AJS uses the JQlite js which is the subset of the jquery and the bind function below is come from the jqlite
+		elem.bind("click",function(){
+			alert(elem[0].innerHTML);
+
+		})
+	}
+// returning the directive
+return{
+	template:"Hello World !!",
+	restrict:'EA',
+	link:linkFunction
+}
+
+})
+
+
+new_obj.controller('custom_filter', ['$scope', function($scope){
+	
+}])

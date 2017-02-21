@@ -162,3 +162,29 @@ Storing the data in the local storage .To store the data in the local storage yo
 
 using the localStorage we can use it store the data so that when the browser reloads the content remains there.
 
+CUSTOM FILTERS IN AJS
+========================
+
+creating a custom filter using the ajs
+
+CUSTOM DIRECTIVES IN AJS
+==========================
+
+
+you have to use the camel casing in the js file when defining the directives
+
+so for example directive-name  to DirectiveName and in the js you have to return the template.
+
+Directive Definition Object - which is the property that is returned for the custom directive
+we can also use the templateUrl.
+we can also create the directives as seperate html tag as well like 
+<directive-name> </directive-name> which will include the content inside the tag
+we can also access the directive using the normal comment and also the class property.
+we can use the restrictive property that will restrict the output
+
+scope is also another property and link also
+link property works with the DOM of the page it controlls how your view is modified
+you need to define it as a function  and it accepts 3 arguments such as scope ,element (element which directive is applied) and attrs which contain all the details of the class or any attribute
+
+
+IMPORTANT when multiple elements have same controllers then it changes every elements.That means it all have the same scope so we have to isolate the each scope from each other.
