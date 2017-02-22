@@ -188,3 +188,15 @@ you need to define it as a function  and it accepts 3 arguments such as scope ,e
 
 
 IMPORTANT when multiple elements have same controllers then it changes every elements.That means it all have the same scope so we have to isolate the each scope from each other.
+
+Shared and Isolated scopes in AJS
+this can be done by by breaking inividual directives to its own scopes
+the scope aproperty is used for that which fill have false and true values.when true value directives will prototypically inherit for each controller.
+prototypically inherit  > simply it is a chain type of inherit for example we can define new prpoerty in the controller which can be accessed from the custom directives
+
+scope property can be of an object which can have different property.
+which are 
+@- text getter or text bind ---> this one doesnot change the controller property only change the directive property
+= - two way bind  --> this one change the controller property also and we do not have to use the {{}}
+& - one way bind --> no need to use the {{}} this one also passes the reference of the variable
+

@@ -197,11 +197,26 @@
 	</div>
 
 	<!-- CUSTOM DIRECTIVES -->
-	<div class="" directive-name>
+	<div ng-controller = "directives">
+		<div class="" directive-name>
 		<!-- or like html tags -->
 		<directive-name></directive-name>
 		
 	</div>
+	</div>
+
+
+
+	<div ng-controller="scopeargs">
+		<p>First variable is : {{name}}</p>
+		<p>Second variable is : {{age}}</p>
+		
+		<div scopeargs-test name="{{name}}" age="age" func ="alertThename()"> 
+			<!-- age= should match with the propoerty name from the controller and the "age" should match with the var name in the p tag -->
+		 </div>
+		 <button value = "from controller" ng-click= "alertThename()"></button>
+	</div>
+	
 <script>
 // coding the controller
 // angular comes from the AJS that is loaded first and module is the app name which is given in the ng-app tag

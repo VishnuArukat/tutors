@@ -266,24 +266,51 @@ new_obj.filter('base',function(){
 
 
 // Custom Directive
-new_obj.directive("directive-name",function(){
+new_obj.directive("DirectiveName",function(){
 	function linkFunction(scope,elem,attrs){
 		// AJS uses the JQlite js which is the subset of the jquery and the bind function below is come from the jqlite
-		elem.bind("click",function(){
+		elem.bind("<!--  -->lick",function(){
 			alert(elem[0].innerHTML);
+			// only changing the clicked directive element
+			$scope.name  = $scope.controllerProperty;
 
 		})
 	}
 // returning the directive
 return{
-	template:"Hello World !!",
+	template:"Hello World !! {{name}}",
 	restrict:'EA',
+	scope:true, /*seperate scope for each directive which can have as an object*/
 	link:linkFunction
 }
 
 })
 
 
-new_obj.controller('custom_filter', ['$scope', function($scope){
-	
+new_obj.controller('directives', ['$scope', function($scope){
+	$scope.controllerProperty = "This is a controller specific property"
+}])
+
+
+// Args in the scope property in the custom directive in the AJS
+
+new_obj.directive("ScopeargsTest",function(){
+	return{
+		restrict:'EA',
+		scope:{
+			name : '@', /* this gets the data from the controller as it has the name property in that but it does not change the property in the controller*/
+			age :'=',
+			func:'&' /*This is for oneway binding the function from the controller*/
+		},
+		template:["<p>value of the directive is {{name}}</p>",'<p>Enter the new name : <input type ="text" ng-model="name"></p>',"<p>value of age in the directive is {{age}}</p>",'<p>Enter the new age : <input type ="text" ng-model="age"></p>',' <button  value= "from directive" ng-click= "func()"></button>'].join('') /*this only change the directive property not the controller property that is why @ is a text bind*/
+
+	}
+})
+
+new_obj.controller('scopeargs', ['$scope', function($scope){
+	$scope.name = "napster";
+	$scope.age = "24";
+	$scope.alertThename = function(){
+			alert($scope.name);
+	}
 }])
