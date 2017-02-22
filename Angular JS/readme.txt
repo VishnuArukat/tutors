@@ -1,6 +1,10 @@
 Angular js tutorial For Beginers
 +++++++++++++++++++++++++++++++++++++
 
+
+Get the different dependancies for the AJS from the following website  https://cdnjs.com/libraries/angular.js/1.5.6
+
+
 "When using the tutorial files use the wamp server since file type protocol doesnt allow cross site ajax request "
 
 Angular js is used for SPA - single page app which consist of single page website.And it is a MVC framework.
@@ -200,3 +204,12 @@ which are
 = - two way bind  --> this one change the controller property also and we do not have to use the {{}}
 & - one way bind --> no need to use the {{}} this one also passes the reference of the variable
 
+
+ANIMATIONS IN AJS
+====================
+this can be done using the angular-animate.js.And use the animate class to the element and use that to access the animation of the different elements.
+
+
+COOKIES IN THE AJS
+==================
+Cookies are used to store the some data in the browser.which can be used by the library angular-cookies.js.cookies are not allowed in the file protocol so you have to start your own local server or enable some of the flags in the chrome

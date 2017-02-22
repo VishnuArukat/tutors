@@ -5,7 +5,22 @@
     <title>My AngularJS App</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="angular-route.min.js"  type="text/javascript"></script>
+    <!-- for the animation using the AJS -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-animate.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-cookies.min.js"></script>
     <script src="controller.js" type="text/javascript"></script>
+    <style>
+    /*.ngenrter are default classes in the ajs*/
+.animate.ng-enter,.animate.ng-leave {
+	transition: 500ms linear all;
+}
+.animate.ng-leave.ng-leave-active{
+	opacity:0;
+}
+.animate.ng-enter.ng-enter-active{
+	opacity:1;
+}
+    </style>
   </head>
   <body>
   		
@@ -215,6 +230,21 @@
 			<!-- age= should match with the propoerty name from the controller and the "age" should match with the var name in the p tag -->
 		 </div>
 		 <button value = "from controller" ng-click= "alertThename()"></button>
+	</div>
+
+	<div ng-controller="animateajs">
+		<p>search: <input type="text" ng-model="searchBox"></p>
+		<ul>
+			<!-- animate comes from the ajs animate class -->
+			<li class="animate" ng-repeat="food in foods | filter:searchBox">{{food}}</li>
+		</ul>
+	</div>
+
+	<!-- COOKIES IN THE AJS -->
+	<div ng-controller ="cookiesajs">
+		{{myCookieVal}}
+		<input type= "text" ng-model="cookieVal">
+		<button ng-click="setCookie(cookieVal)">Update Cookie Value</button>
 	</div>
 	
 <script>

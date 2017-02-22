@@ -1,5 +1,5 @@
 console.log("hdshjhsjds",window.location.href)
-var new_obj = angular.module('my_app',['ngRoute']); /*adding the ngRoute to the dependancy list*/
+var new_obj = angular.module('my_app',['ngRoute','ngAnimte','ngCookies']); /*adding the ngRoute to the dependancy list*/
 new_obj.config(['$routeProvider',function($routeProvider,$locationProvider){
 	$routeProvider.when('/',{
 
@@ -314,3 +314,19 @@ new_obj.controller('scopeargs', ['$scope', function($scope){
 			alert($scope.name);
 	}
 }])
+
+
+
+
+// Adding AJS animation in the page
+
+new_obj.controller('animateajs', function($scope){
+	$scope.foods = ['pizza','burger','soda',;'fries'];
+})
+
+new_obj.controller('cookiesajs', function($scope,$cookies){
+	$scope.myCookieVal = $cookies.get('cookie');
+	$scope.setCookie = function(val){
+		$cookies.put('cookie',val)
+	}
+})
