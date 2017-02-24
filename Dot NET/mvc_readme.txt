@@ -63,3 +63,37 @@ And there will be a route collection for the index page and it will be default a
 And also we can restrict user from going to a specific route by using the Ignore.route   this can be used to prevent the user from accessing the unwanted config urls.
 
 in the mvc there is no start page that is in the first hit it never comes to the page for setting the start page you have to set the route = "" in the route config.
+
+Simplifing the urls we can increase the SEO of the website.
+
+
+
+
+Actionresult in the controller have multiple types for example like 
+viewresult()  return the view
+PartialViewresult() returns the partial view
+json result   return the json 
+empty result has no helper method so to return the empty result use like this return new EmptyResult()
+
+refer this link for further details https://msdn.microsoft.com/en-us/library/system.web.mvc.actionresult(v=vs.118).aspx
+
+we can also pass the values as parameters in the action result and use that if we do that we have to strictly pass that through the url or as a query string or it will throw the error 
+and these parameters are optional.	
+
+to specify a optional parameter use the ? for the int and for the string type you dont have to use the ? because in c# string is reference type and so just type it as it is.
+
+we can also add parameters in the route bundle using the  {} ,{} and define those in the action in the controller.
+we can add constraints in the route map like putting comma after the default argument and use the regular expression for defing the constraint for the parameter .When using the regular expression we can @ sign or we may have to use the doble backslash since backslash character is an escape characcter.
+
+
+
+PASSING THE DATA TO THE VIEW
+==============================
+
+Passing it as a return value in the controller 
+and another method is called the using the ViewData method which is common to all the controllers.
+and it is a dictionary and for example like below
+viewData["key"] = value  this can be accessed from the view
+or use the ViewBag.Movie = movie;
+
+in the view we can write any C# codes using the @ sign and {} and also add comments as @* write the comments   *@
